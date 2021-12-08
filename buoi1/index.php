@@ -17,7 +17,6 @@
 						$password = '';
 						$error = 'Username và Password không đúng';
 						$flag = false;
-						$url = 'http://localhost/php/buoi1/';
 						if(!empty($_GET)){
 
 							$username = $_GET['username'];
@@ -26,15 +25,15 @@
 							if($username !== "admin" || $password !== "123456"){
 								$flag = true;
 							}else{
-								header('Location: ' .$url.'admin.php');
-								die();
+								header('Location: admin.php');
+								exit();
 							}
 
 							if($username !== "member" || $password !== "123456"){
 								$flag = true;
 							}else{
-								header('Location: ' .$url.'member.php');
-								die();
+								header('Location: member.php');
+								exit();
 							}
 
 						}
