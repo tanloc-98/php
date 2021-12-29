@@ -4,18 +4,22 @@
     foreach($arrMenu as $key1 => $menuLevel1){
         $classActive = ($key1 == $currentMenu) ? 'class="active"' : '';
         if(isset($menuLevel1['child'])){
-            $xhtml .= sprintf('<li %s><a href="%s">%s </a><ul>',$classActive, $menuLevel1['link'], $menuLevel1['name']);
             foreach ($menuLevel1['child'] as $key2 => $menuLevel2) {
-                $classActive = ($key2 == $currentMenu) ? 'class="active"' : ''; 
+                if($key2 == $currentMenu) $classActive =  'class="active"';
+                foreach ($menuLevel2['child'] as $key3 => $menuLevel3) {
+                    if($key3 == $currentMenu) $classActive =  'class="active"';
+                }
+            }
+            $xhtml .= sprintf('<li %s><a href="%s">%s </a><ul>',$classActive, $menuLevel1['link'], $menuLevel1['name']);
+            foreach ($menuLevel1['child'] as $key2 => $menuLevel2) { 
                 if(isset($menuLevel2['child'])){
-                    $xhtml .= sprintf('<li %s><a href="%s">%s </a><ul>',$classActive, $menuLevel2['link'], $menuLevel2['name']);
+                    $xhtml .= sprintf('<li ><a href="%s">%s </a><ul>', $menuLevel2['link'], $menuLevel2['name']);
                     foreach ($menuLevel2['child'] as $key3 => $menuLevel3) {
-                        $classActive = ($key3 == $currentMenu) ? 'class="active"' : ''; 
-                        $xhtml .= sprintf('<li %s><a href="%s">%s </a></li>',$classActive, $menuLevel3['link'], $menuLevel3['name']);
+                        $xhtml .= sprintf('<li ><a href="%s">%s </a></li>', $menuLevel3['link'], $menuLevel3['name']);
                     }   
                     $xhtml .= '</ul></li>';
                 }else{
-                    $xhtml .= sprintf('<li %s><a href="%s">%s </a></li>',$classActive, $menuLevel2['link'], $menuLevel2['name']);
+                    $xhtml .= sprintf('<li><a href="%s">%s </a></li>', $menuLevel2['link'], $menuLevel2['name']);
                 }
             }
             $xhtml .= '</ul></li>';
