@@ -43,5 +43,3 @@
             }
         }
     }
-
-    print_r($arrayBreadcrumb[$currentMenu]);
