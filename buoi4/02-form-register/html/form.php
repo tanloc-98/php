@@ -3,11 +3,12 @@
 <?php require_once './data/data.php' ?>
 <?php 
     $title          = 'Registration Info';
+    $xhtml          = '';
     $inputName      =  inputHepler('text','Name','name','input--style-2');
     $inputBirthday  =  inputHepler('text','Birthdate','birthday','input--style-2 js-datepicker');
     $inputRescode   =  inputHepler('text','Registration Code','res_code','input--style-2');
     $inputGender    =  selectHelper($arrGender,'Gender','gender');
-    $inputClass     =  selectHelper($arrGender,'Class','class');
+    $inputClass     =  selectHelper($arrClass,'Class','class');
 
     function renderInput($input,$key){
         if($key == 'input'){
@@ -15,6 +16,7 @@
         }
         return sprintf('<div class="input-group"><div class="rs-select2 js-select-simple select--no-search">%s<div class="select-dropdown"></div></div></div>',$input);
     }
+
 ?>
 <div class="page-wrapper bg-red p-t-180 p-b-100 font-robo">
         <div class="wrapper wrapper--w960">
