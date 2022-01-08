@@ -10,7 +10,11 @@ $(document).ready(function(){
 
 
 function activeMenu(dataName,dataParent,dataChild){
-    if(dataName !== undefined) $('a[href="'+ dataName +'.php"').parent().addClass('active');
-    if(dataChild !== undefined) $('a[href="'+ dataChild +'.php"').parent().addClass('active');
-    if(dataParent !== undefined) $('a[href="'+ dataParent +'.php"').parent().addClass('active');
+    let active = '';
+    if(currentFile === '') active = 'index';
+    if(dataName !== undefined) active = dataName;
+    if(dataChild !== undefined) active = dataName;
+    if(dataParent !== undefined) active = dataName;
+
+    $('a[href="'+ active +'.php"').parent().addClass('active')
 }
