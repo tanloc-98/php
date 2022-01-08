@@ -13,8 +13,8 @@ function activeMenu(dataName,dataParent,dataChild){
     let active = '';
     if(currentFile === '') active = 'index';
     if(dataName !== undefined) active = dataName;
-    if(dataChild !== undefined) active = dataName;
-    if(dataParent !== undefined) active = dataName;
+    if(dataChild !== undefined) active = dataChild;
+    if(dataParent !== undefined) active = dataParent;
 
     $('a[href="'+ active +'.php"').parent().addClass('active')
 }
