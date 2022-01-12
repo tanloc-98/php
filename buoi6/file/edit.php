@@ -44,25 +44,25 @@
 
 		$flagChangeImage = $fileUpload['name'] ? true : false;
 		if(!$flagChangeImage){
-			$newNameFile	= randomUpload($img, 7);
-			rename("./images/$img","./images/$newNameFile");
+			$newNameFileImg = $img;
 		}else{
 			$flagSize 		= checkSize($fileUpload['size'], $configs['min_size'], $configs['max_size']);
 			$flagExtension 	= checkExtension($fileUpload['name'], explode('|', $configs['extension']));
 			if($flagSize == false) 		$errorUpload 		= '<p class="error">Kích thước vượt quá quy định từ 500KB => 5MB</p>';
 			if($flagExtension == false) $errorUpload 		.= '<p class="error">Không phải định dạng hình ảnh, vui lòng thử lại</p>';
-			if($flagSize == true && $flagExtension == true){
-				$newNameFile	= randomUpload($fileUpload['name'], 7);
-				@unlink("./images/$img");
-				@move_uploaded_file($fileUpload['tmp_name'], './images/' . $newNameFile);
-			}
+			$newNameFileImg	= randomUpload($fileUpload['name'], 7);
 		}
 		
 		// A-Z, a-z, 0-9: AzG09
 		if($errorTitle == '' && $errorDescription == '' && $errorUpload == ''){
-			$data	= $title . '||' . $description .'||'. $newNameFile;
+			$data	= $title . '||' . $description .'||'. $newNameFileImg;
 			
 			$filename	= './files/' . $id . '.txt';
+			if($flagChangeImage == true){
+				@unlink("./images/$img");
+				@move_uploaded_file($fileUpload['tmp_name'], './images/' .$newNameFileImg);
+			}
+
 			if(file_put_contents($filename, $data)){
 				$title			= '';
 				$description	= '';
