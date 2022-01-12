@@ -11,7 +11,7 @@
                     $xhtml .= sprintf('<li data-parent="%s"><a href="%s">%s</a><ul>',$keyLevelOne,  $menuLevelTwo['link'],  $menuLevelTwo['name']);
 
                     foreach($menuLevelTwo['child'] as $menuLevelThree){
-                        $xhtml .= sprintf('<li data-child="%s"><a href="%s">%s</a></li>',$keyLevelOne,  $menuLevelThree['link'],  $menuLevelThree['name']);
+                        $xhtml .= sprintf('<li data-parent="%s"><a href="%s">%s</a></li>',$keyLevelOne,  $menuLevelThree['link'],  $menuLevelThree['name']);
                     }
 
                     $xhtml .= '</ul></li>';
