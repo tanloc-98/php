@@ -8,7 +8,6 @@
 </head>
 <body>
 <?php
-	$messageDeleteMulti = false;
 	if(!empty($_POST['checkbox'])){
 		$checkbox	= $_POST['checkbox'];
 		foreach($checkbox as $key => $value){
@@ -18,18 +17,12 @@
 			@unlink("./images/$nameFileImage");
 			@unlink("./files/$value.txt");
 		}
-	}else{
-		$messageDeleteMulti = true;
 	}
 ?>
 	<div id="wrapper">
     	<div class="title">PHP FILE</div>
         <div id="form">   
-			<?php if($messageDeleteMulti){ ?>
-				<p>Dữ liệu đang được cập nhật! Click vào <a href="index.php">đây</a> đê quay về trang chủ.</p>      
-			<?php }else{ ?>
-				<p>Dữ liệu đã được xóa thành công! Click vào <a href="index.php">đây</a> đê quay về trang chủ.</p>       
-			<?php } ?>
+			<p>Dữ liệu đã được xóa thành công! Click vào <a href="index.php">đây</a> đê quay về trang chủ.</p>
         </div>
     </div>
 </body>

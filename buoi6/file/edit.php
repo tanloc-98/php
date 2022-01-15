@@ -46,11 +46,11 @@
 		if(!$flagChangeImage){
 			$newNameFileImg = $img;
 		}else{
+			$newNameFileImg	= randomUpload($fileUpload['name'], 7);
 			$flagSize 		= checkSize($fileUpload['size'], $configs['min_size'], $configs['max_size']);
 			$flagExtension 	= checkExtension($fileUpload['name'], explode('|', $configs['extension']));
 			if($flagSize == false) 		$errorUpload 		= '<p class="error">Kích thước vượt quá quy định từ 500KB => 5MB</p>';
 			if($flagExtension == false) $errorUpload 		.= '<p class="error">Không phải định dạng hình ảnh, vui lòng thử lại</p>';
-			$newNameFileImg	= randomUpload($fileUpload['name'], 7);
 		}
 		
 		// A-Z, a-z, 0-9: AzG09
@@ -92,7 +92,10 @@
 					<input type="file" name="file-upload">
 					<?php echo $errorUpload ?>
 				</div>
-
+				<div class="row">
+					<p>Image</p>
+					<p><img src="images/<?= $img ?>" style="width:150px"/></p>
+				</div>
 
 				<div class="row">
 					<input type="submit" value="Save" name="submit">

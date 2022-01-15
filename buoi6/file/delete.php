@@ -48,6 +48,10 @@
 				<span><?php echo $description;?></span>
 			</div>
 			<div class="row">
+					<p>Image</p>
+					<p><img src="images/<?= $img ?>" style="width:150px"/></p>
+			</div>
+			<div class="row">
 				<input type="hidden" name="id" value="<?php echo $id;?>">
 				<input type="submit" value="Delete" name="submit">
 				<input type="button" value="Cancel" name="cancel" id="cancel-button">

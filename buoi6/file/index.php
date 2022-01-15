@@ -7,25 +7,28 @@
 <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
+		let messageDeleteMulti = '';
+		let countInput = $('input[name="checkbox[]"]').size();
+		if(countInput == 0){
+			messageDeleteMulti = '<h2 style="text-align:center">Dữ liệu đang được cập nhật!</h2>';
+			$("#multy-delete").css('display','none');
+		};
+		$('.noValue').html(messageDeleteMulti);
 		$('#multy-delete').click(function(){
-			let countInput = $('input[name="checkbox[]"]').size();
 			let countCheckBox = $('input[name="checkbox[]"]:checked').size();
-			if(countInput > 0 ){
-				if(countCheckBox > 0){
-					if(confirm("Bạn có muốn xóa dữ liệu!") == true) $('#main-form').submit();
-				}else{
-					alert("Bạn phải check ít nhất 1 check box!");
-				}
+			if(countCheckBox > 0){
+				if(confirm("Bạn có muốn xóa dữ liệu!") == true) $('#main-form').submit();
 			}else{
-				$('#main-form').submit()
+				alert("Bạn phải check ít nhất 1 check box!");
 			}
-		});
+		})
 	});
 </script>
 </head>
 <body>
 	<div id="wrapper">
     	<div class="title">PHP FILE - Index</div>
+		<div class="noValue"></div>
         <div class="list">   
 			<form action="multy-delete.php" method="post" name="main-form" id="main-form">
 <?php
