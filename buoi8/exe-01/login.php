@@ -10,6 +10,7 @@
     	<div class="title">LOGIN</div>
         <div id="form">   
         <?php
+			$_SESSION['flagPermission'] = false;
         	session_start();
 			
 			$timeout = simplexml_load_file("_data/timeout.xml") -> timeout;
