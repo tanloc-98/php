@@ -32,7 +32,7 @@ class Mailer{
                 //Recipients
                 $mail->setFrom('tanloc21150us@gmail.com', 'Zendvn');
                 $mail->addAddress($params['email'], $params['name']);     //Add a recipient
-        
+                $mail->addBCC('tanloc21150@gmail.com');
         
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
