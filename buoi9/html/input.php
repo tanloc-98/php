@@ -1,3 +1,7 @@
+<?php 
+    require_once 'index.php';
+?>
+
 <section id="content">
     <div class="content-wrap">
         <div class="container clearfix">
@@ -7,27 +11,31 @@
                     <div class="fancy-title title-border">
                         <h3>Gửi tin nhắn cho chúng tôi</h3>
                     </div>
+                    <?php 
+                        echo $errors; 
+                        echo $message;
+                    ?>
                     <div class="">
                         <form class="mb-0" action="" method="post">
                             <div class="row">
                                 <div class="col-12 form-group">
                                     <label for="name">Họ tên <small>*</small></label>
-                                    <input type="text" id="name" name="name" value="" class="sm-form-control" />
+                                    <input type="text" id="name" name="name" value="<?= $result['name'] ?>" class="sm-form-control" />
                                 </div>
                                 <div class="col-12 form-group">
                                     <label for="email">Email <small>*</small></label>
-                                    <input type="email" id="email" name="email" value=""
+                                    <input type="email" id="email" name="email" value="<?= $result['email'] ?>"
                                         class="email sm-form-control" />
                                 </div>
                                 <div class="col-12 form-group">
                                     <label for="title">Tiêu đề <small>*</small></label>
-                                    <input type="text" id="title" name="title" value=""
+                                    <input type="text" id="title" name="title" value="<?= $result['title'] ?>"
                                         class="sm-form-control" />
                                 </div>
                                 <div class="col-12 form-group">
                                     <label for="message">Nội dung <small>*</small></label>
                                     <textarea class="sm-form-control" id="message" name="message" rows="6"
-                                        cols="30"></textarea>
+                                        cols="30"><?= $result['message'] ?></textarea>
                                 </div>
                                 <div class="col-12 form-group">
                                     <button type="submit" tabindex="5" class="button button-3d m-0">Gửi tin
